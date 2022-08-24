@@ -1,0 +1,1 @@
+sonar-scanner.bat -D"sonar.projectKey=chess" -D"sonar.sources=." -D"sonar.java.binaries=./target/classes" -D"sonar.host.url=http://localhost:9000" -D"sonar.login=sqp_12ed8441366d2d7619faab9def21efb97a086d8b"
