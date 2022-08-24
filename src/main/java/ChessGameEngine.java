@@ -269,38 +269,42 @@ public class ChessGameEngine implements Serializable{
         }
         else
         {
-            if ( pieceOnSquare == null ||
-                !pieceOnSquare.equals( currentPiece ) ) // moving
-            {
-                boolean moveSuccessful =
-                    currentPiece.move(
-                        board,
-                        squareClicked.getRow(),
-                        squareClicked.getColumn() );
-                if ( moveSuccessful ){
-                    checkGameConditions();
-                }
-                else
-                {
-                    int row = squareClicked.getRow();
-                    int col = squareClicked.getColumn();
-                    JOptionPane.showMessageDialog(
-                        squareClicked,
-                        "The move to row " + ( row + 1 ) + " and column "
-                            + ( col + 1 )
-                            + " is either not valid or not legal "
-                            + "for this piece. Choose another move location, "
-                            + "and try using your brain this time!",
-                        "Invalid move",
-                        JOptionPane.ERROR_MESSAGE );
-                }
-                firstClick = true;
-            }
-            else
-            // user is just unselecting the current piece
-            {
-                firstClick = true;
-            }
+         checkClick(squareClicked, pieceOnSquare);
         }
     }
+
+private void checkClick(BoardSquare squareClicked,ChessGamePiece pieceOnSquare) {
+	   if ( pieceOnSquare == null ||
+               !pieceOnSquare.equals( currentPiece ) ) // moving
+           {
+               boolean moveSuccessful =
+                   currentPiece.move(
+                       board,
+                       squareClicked.getRow(),
+                       squareClicked.getColumn() );
+               if ( moveSuccessful ){
+                   checkGameConditions();
+               }
+               else
+               {
+                   int row = squareClicked.getRow();
+                   int col = squareClicked.getColumn();
+                   JOptionPane.showMessageDialog(
+                       squareClicked,
+                       "The move to row " + ( row + 1 ) + " and column "
+                           + ( col + 1 )
+                           + " is either not valid or not legal "
+                           + "for this piece. Choose another move location, "
+                           + "and try using your brain this time!",
+                       "Invalid move",
+                       JOptionPane.ERROR_MESSAGE );
+               }
+               firstClick = true;
+           }
+           else
+           // user is just unselecting the current piece
+           {
+               firstClick = true;
+           }
+}
 }
